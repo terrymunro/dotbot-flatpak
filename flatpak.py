@@ -95,8 +95,7 @@ class Flatpak(dotbot.Plugin):
 
             try:
                 subprocess.run(
-                    ["flatpak", "remote-add", "--if-not-exists", repo[0], repo[1]], 
-                    shell=True,
+                    ["flatpak", "remote-add", "--if-not-exists", repo.name, repo.url], 
                     check=True
                 )
             except subprocess.CalledProcessError:
@@ -140,7 +139,6 @@ class Flatpak(dotbot.Plugin):
                         for part in parts
                         if part is not None
                     ], 
-                    shell=True,
                     check=True
                 )
             except subprocess.CalledProcessError:
